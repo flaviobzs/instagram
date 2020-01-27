@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import multer from 'multer';
-import multerConfig from './config/multer';
+import multerConfig from '../src/config/multer';
 
-import PostController from './controllers/PostController';
-import LikeController from './controllers/LikeController';
+import PostController from './app/controllers/PostController';
+import LikeController from './app/controllers/LikeController';
 
 const routes = Router();
 
-routes.post('/boxes', PostController.index);
-routes.get('/posts/:id/like', LikeController.store); // esse id é pego do usuario logado numa aplicação (middleware)
+routes.get('/posts', PostController.index);
+routes.post('/posts/:id/like', LikeController.store); // esse id é pego do usuario logado numa aplicação (middleware)
 
 routes.post(
   '/posts',
